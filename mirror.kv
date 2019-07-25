@@ -1,0 +1,107 @@
+#: import main smart-mirror
+
+mirrorWidget:
+
+<Widget>:
+    canvas.after:
+        Line:
+            rectangle: self.x+1, self.y+1,self.width-1,self.height-1
+            dash_offset: 5
+            dash_length: 3
+
+<BoxLayout>:
+    canvas.after:
+        Line:
+            rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            dash_offset: 5
+            dash_length: 3
+
+<AnchorLayout>:
+    canvas.after:
+        Line:
+            rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            dash_offset: 5
+            dash_length: 3
+
+
+<mirrorWidget>:
+    screen_manager: screen_manager
+    current: 'home'
+    AnchorLayout:
+        size: root.width, root.height
+        anchor_x: 'left'
+        anchor_y: 'top'
+        Label:
+            id: clock_label
+            text: root.clock_time_input
+            font_size: 20
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            size_hint_y: None
+            size_hint_x: .2
+            padding: (5, 5)
+    AnchorLayout:
+        size: root.size
+        anchor_x: 'right'
+        anchor_y: 'top'
+        Button:
+            size_hint_y: None
+            size_hint_x: .2
+            text: 'Switch Screen'
+            on_press: root.switchScreen()
+    #screen_manager: screen_manager
+    ScreenManager:
+        id: screen_manager
+        pos: root.pos
+        size: root.width, root.height / 3
+
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'home'
+            BoxLayout:
+                orientation: 'vertical'
+                size: root.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        id: upper_label
+                        font_size: 20
+                        text: root.init_greeting
+                BoxLayout:
+                    orientation: 'horizontal'
+                    text: root.wise_quote
+                    text_size: self.size
+                    halign: 'center'
+                BoxLayout:
+                    orientation: 'horizontal'
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'weather'
+            Label:
+                text: "In Progress: Weather Page"
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'task'
+            Label:
+                text: "In Progress: Task Page"
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'spotify'
+            Label:
+                text: "In Progress: Spotify Page"
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'news'
+            Label:
+                text: "In Progress: News Page"
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'dict'
+            Label:
+                text: "In Progress: Dict Page"
+        Screen:
+            screen_manager: self.screen_manager
+            name: 'settings'
+            Label:
+                text: "In Progress: Settings Page"

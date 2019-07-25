@@ -1,15 +1,15 @@
 import json
 import requests
 import constants
-import todoist
+#import todoist
+
+# All relevant API calls which will be made from the smart-mirror.py script
 
 class apiCalls:
 
+    # Honestly not sure why this is here. I wrote this script at 2am.
     def __init__(self):
-        self.request =  "Hello RWorld"
-
-    def basicAPICall(self):
-        return "hello world"
+        self.request =  "Hello World"
 
     # Returns json script of weather api
     # Default is the location of the device
